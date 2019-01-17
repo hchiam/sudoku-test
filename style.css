@@ -1,0 +1,21 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: avenir, arial;
+  margin: 50px;
+}
+
+.row {
+  padding: 0px;
+}
+
+button {
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#input {
+  width: 50%;
+  border-radius: 5px;
+  padding: 10px;
+}
