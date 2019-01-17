@@ -13,160 +13,161 @@
     <script src="/script.js" defer></script>
   </head>  
   <body>
+    <button id="clear-board" onclick="clearBoard()">Clear Board</button>
     <div>
       <input id="input" 
              type="number" 
-             placeholder="Enter a number here, then click on a button to use it."
-             onkeydown="resetInputColour()">
+             placeholder="To enter a number: type here and click on a button."
+             onkeyup="inputAction()">
     </div>
     <div>
-      <button id="11" onclick="set(this.id)"></button>
-      <button id="12" onclick="set(this.id)"></button>
-      <button id="13" onclick="set(this.id)"></button>
+      <button id="11" onclick="set(this.id)">&nbsp;</button>
+      <button id="12" onclick="set(this.id)">&nbsp;</button>
+      <button id="13" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="14" onclick="set(this.id)"></button>
-      <button id="15" onclick="set(this.id)"></button>
-      <button id="16" onclick="set(this.id)"></button>
+      <button id="14" onclick="set(this.id)">&nbsp;</button>
+      <button id="15" onclick="set(this.id)">&nbsp;</button>
+      <button id="16" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="17" onclick="set(this.id)"></button>
-      <button id="18" onclick="set(this.id)"></button>
-      <button id="19" onclick="set(this.id)"></button>
-      <input placeholder="notes">
+      <button id="17" onclick="set(this.id)">&nbsp;</button>
+      <button id="18" onclick="set(this.id)">&nbsp;</button>
+      <button id="19" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
     </div>
     <div>
-      <button id="21" onclick="set(this.id)"></button>
-      <button id="22" onclick="set(this.id)"></button>
-      <button id="23" onclick="set(this.id)"></button>
+      <button id="21" onclick="set(this.id)">&nbsp;</button>
+      <button id="22" onclick="set(this.id)">&nbsp;</button>
+      <button id="23" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="24" onclick="set(this.id)"></button>
-      <button id="25" onclick="set(this.id)"></button>
-      <button id="26" onclick="set(this.id)"></button>
+      <button id="24" onclick="set(this.id)">&nbsp;</button>
+      <button id="25" onclick="set(this.id)">&nbsp;</button>
+      <button id="26" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="27" onclick="set(this.id)"></button>
-      <button id="28" onclick="set(this.id)"></button>
-      <button id="29" onclick="set(this.id)"></button>
-      <input placeholder="notes">
+      <button id="27" onclick="set(this.id)">&nbsp;</button>
+      <button id="28" onclick="set(this.id)">&nbsp;</button>
+      <button id="29" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
     </div>
     <div>
-      <button id="31" onclick="set(this.id)"></button>
-      <button id="32" onclick="set(this.id)"></button>
-      <button id="33" onclick="set(this.id)"></button>
+      <button id="31" onclick="set(this.id)">&nbsp;</button>
+      <button id="32" onclick="set(this.id)">&nbsp;</button>
+      <button id="33" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="34" onclick="set(this.id)"></button>
-      <button id="35" onclick="set(this.id)"></button>
-      <button id="36" onclick="set(this.id)"></button>
+      <button id="34" onclick="set(this.id)">&nbsp;</button>
+      <button id="35" onclick="set(this.id)">&nbsp;</button>
+      <button id="36" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="37" onclick="set(this.id)"></button>
-      <button id="38" onclick="set(this.id)"></button>
-      <button id="39" onclick="set(this.id)"></button>
-      <input placeholder="notes">
-    </div>
-    <hr width="410px" style="text-align:left;margin-left:0;">
-    <div>
-      <button id="41" onclick="set(this.id)"></button>
-      <button id="42" onclick="set(this.id)"></button>
-      <button id="43" onclick="set(this.id)"></button>
-      |
-      <button id="44" onclick="set(this.id)"></button>
-      <button id="45" onclick="set(this.id)"></button>
-      <button id="46" onclick="set(this.id)"></button>
-      |
-      <button id="47" onclick="set(this.id)"></button>
-      <button id="48" onclick="set(this.id)"></button>
-      <button id="49" onclick="set(this.id)"></button>
-      <input placeholder="notes">
-    </div>
-    <div>
-      <button id="51" onclick="set(this.id)"></button>
-      <button id="52" onclick="set(this.id)"></button>
-      <button id="53" onclick="set(this.id)"></button>
-      |
-      <button id="54" onclick="set(this.id)"></button>
-      <button id="55" onclick="set(this.id)"></button>
-      <button id="56" onclick="set(this.id)"></button>
-      |
-      <button id="57" onclick="set(this.id)"></button>
-      <button id="58" onclick="set(this.id)"></button>
-      <button id="59" onclick="set(this.id)"></button>
-      <input placeholder="notes">
-    </div>
-    <div>
-      <button id="61" onclick="set(this.id)"></button>
-      <button id="62" onclick="set(this.id)"></button>
-      <button id="63" onclick="set(this.id)"></button>
-      |
-      <button id="64" onclick="set(this.id)"></button>
-      <button id="65" onclick="set(this.id)"></button>
-      <button id="66" onclick="set(this.id)"></button>
-      |
-      <button id="67" onclick="set(this.id)"></button>
-      <button id="68" onclick="set(this.id)"></button>
-      <button id="69" onclick="set(this.id)"></button>
-      <input placeholder="notes">
+      <button id="37" onclick="set(this.id)">&nbsp;</button>
+      <button id="38" onclick="set(this.id)">&nbsp;</button>
+      <button id="39" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
     </div>
     <hr width="410px" style="text-align:left;margin-left:0;">
     <div>
-      <button id="71" onclick="set(this.id)"></button>
-      <button id="72" onclick="set(this.id)"></button>
-      <button id="73" onclick="set(this.id)"></button>
+      <button id="41" onclick="set(this.id)">&nbsp;</button>
+      <button id="42" onclick="set(this.id)">&nbsp;</button>
+      <button id="43" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="74" onclick="set(this.id)"></button>
-      <button id="75" onclick="set(this.id)"></button>
-      <button id="76" onclick="set(this.id)"></button>
+      <button id="44" onclick="set(this.id)">&nbsp;</button>
+      <button id="45" onclick="set(this.id)">&nbsp;</button>
+      <button id="46" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="77" onclick="set(this.id)"></button>
-      <button id="78" onclick="set(this.id)"></button>
-      <button id="79" onclick="set(this.id)"></button>
-      <input placeholder="notes">
+      <button id="47" onclick="set(this.id)">&nbsp;</button>
+      <button id="48" onclick="set(this.id)">&nbsp;</button>
+      <button id="49" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
     </div>
     <div>
-      <button id="81" onclick="set(this.id)"></button>
-      <button id="82" onclick="set(this.id)"></button>
-      <button id="83" onclick="set(this.id)"></button>
+      <button id="51" onclick="set(this.id)">&nbsp;</button>
+      <button id="52" onclick="set(this.id)">&nbsp;</button>
+      <button id="53" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="84" onclick="set(this.id)"></button>
-      <button id="85" onclick="set(this.id)"></button>
-      <button id="86" onclick="set(this.id)"></button>
+      <button id="54" onclick="set(this.id)">&nbsp;</button>
+      <button id="55" onclick="set(this.id)">&nbsp;</button>
+      <button id="56" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="87" onclick="set(this.id)"></button>
-      <button id="88" onclick="set(this.id)"></button>
-      <button id="89" onclick="set(this.id)"></button>
-      <input placeholder="notes">
+      <button id="57" onclick="set(this.id)">&nbsp;</button>
+      <button id="58" onclick="set(this.id)">&nbsp;</button>
+      <button id="59" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
     </div>
     <div>
-      <button id="91" onclick="set(this.id)"></button>
-      <button id="92" onclick="set(this.id)"></button>
-      <button id="93" onclick="set(this.id)"></button>
+      <button id="61" onclick="set(this.id)">&nbsp;</button>
+      <button id="62" onclick="set(this.id)">&nbsp;</button>
+      <button id="63" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="94" onclick="set(this.id)"></button>
-      <button id="95" onclick="set(this.id)"></button>
-      <button id="96" onclick="set(this.id)"></button>
+      <button id="64" onclick="set(this.id)">&nbsp;</button>
+      <button id="65" onclick="set(this.id)">&nbsp;</button>
+      <button id="66" onclick="set(this.id)">&nbsp;</button>
       |
-      <button id="97" onclick="set(this.id)"></button>
-      <button id="98" onclick="set(this.id)"></button>
-      <button id="99" onclick="set(this.id)"></button>
-      <input placeholder="notes">
+      <button id="67" onclick="set(this.id)">&nbsp;</button>
+      <button id="68" onclick="set(this.id)">&nbsp;</button>
+      <button id="69" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
+    </div>
+    <hr width="410px" style="text-align:left;margin-left:0;">
+    <div>
+      <button id="71" onclick="set(this.id)">&nbsp;</button>
+      <button id="72" onclick="set(this.id)">&nbsp;</button>
+      <button id="73" onclick="set(this.id)">&nbsp;</button>
+      |
+      <button id="74" onclick="set(this.id)">&nbsp;</button>
+      <button id="75" onclick="set(this.id)">&nbsp;</button>
+      <button id="76" onclick="set(this.id)">&nbsp;</button>
+      |
+      <button id="77" onclick="set(this.id)">&nbsp;</button>
+      <button id="78" onclick="set(this.id)">&nbsp;</button>
+      <button id="79" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
     </div>
     <div>
-      <input placeholder="notes" style="width:119px">
+      <button id="81" onclick="set(this.id)">&nbsp;</button>
+      <button id="82" onclick="set(this.id)">&nbsp;</button>
+      <button id="83" onclick="set(this.id)">&nbsp;</button>
       |
-      <input placeholder="notes" style="width:119px">
+      <button id="84" onclick="set(this.id)">&nbsp;</button>
+      <button id="85" onclick="set(this.id)">&nbsp;</button>
+      <button id="86" onclick="set(this.id)">&nbsp;</button>
       |
-      <input placeholder="notes" style="width:119px">
+      <button id="87" onclick="set(this.id)">&nbsp;</button>
+      <button id="88" onclick="set(this.id)">&nbsp;</button>
+      <button id="89" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
+    </div>
+    <div>
+      <button id="91" onclick="set(this.id)">&nbsp;</button>
+      <button id="92" onclick="set(this.id)">&nbsp;</button>
+      <button id="93" onclick="set(this.id)">&nbsp;</button>
+      |
+      <button id="94" onclick="set(this.id)">&nbsp;</button>
+      <button id="95" onclick="set(this.id)">&nbsp;</button>
+      <button id="96" onclick="set(this.id)">&nbsp;</button>
+      |
+      <button id="97" onclick="set(this.id)">&nbsp;</button>
+      <button id="98" onclick="set(this.id)">&nbsp;</button>
+      <button id="99" onclick="set(this.id)">&nbsp;</button>
+      <input placeholder="Notes:">
+    </div>
+    <div>
+      <input placeholder="Notes:" style="width:119px">
+      |
+      <input placeholder="Notes:" style="width:119px">
+      |
+      <input placeholder="Notes:" style="width:119px">
     </div>
     <div style="padding:10px 0">
-      <input placeholder="notes" style="width:119px">
+      <input placeholder="Notes:" style="width:119px">
       |
-      <input placeholder="notes" style="width:119px">
+      <input placeholder="Notes:" style="width:119px">
       |
-      <input placeholder="notes" style="width:119px">
+      <input placeholder="Notes:" style="width:119px">
     </div>
     <div>
-      <input placeholder="notes" style="width:119px">
+      <input placeholder="Notes:" style="width:119px">
       |
-      <input placeholder="notes" style="width:119px">
+      <input placeholder="Notes:" style="width:119px">
       |
-      <input placeholder="notes" style="width:119px">
+      <input placeholder="Notes:" style="width:119px">
     </div>
   </body>
 </html>
