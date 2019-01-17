@@ -51,6 +51,22 @@ function getRandomRow() {
   return shuffleArray([[1],[2],[3],[4],[5],[6],[7],[8],[9]]);
 }
 
+function setFixedNumberCell(row, col, boardRepresentation) {
+  var index = (row + 1) + '' + (col + 1);
+  document.getElementById(index).disabled = true;
+  document.getElementById(index).style.background = '#555';
+  document.getElementById(index).style.color = 'white';
+  document.getElementById(index).innerHTML = boardRepresentation[row][col];
+}
+
+function setBlankCell(row, col, boardRepresentation) {
+  var index = (row + 1) + '' + (col + 1);
+  document.getElementById(index).disabled = false;
+  document.getElementById(index).style.background = '#555';
+  document.getElementById(index).style.color = 'white';
+  document.getElementById(index).innerHTML = '&nbsp;';
+}
+
 function fillBoard() {
   var boardRepresentation = [
     [],[],[],[],[],[],[],[],[]
@@ -60,11 +76,12 @@ function fillBoard() {
   }
   for (var j=0; j<9; j++) {
     for (var k=0; k<9; k++) {
-      var index = (j+1) + '' + (k+1);
-      document.getElementById(index).disabled = true;
-      document.getElementById(index).style.background = '#555';
-      document.getElementById(index).style.color = 'white';
-      document.getElementById(index).innerHTML = boardRepresentation[j][k];
+      var coin = Math.random();
+      if (coin > 0.75) {
+        setFixedNumberCell(j, k, boardRepresentation);
+      } else {
+        setBlankCell(j, k, boardRepresentation);
+      }
     }
   }
 }
@@ -75,11 +92,7 @@ function clearBoard() {
   ];
   for (var j=0; j<9; j++) {
     for (var k=0; k<9; k++) {
-      var index = (j+1) + '' + (k+1);
-      document.getElementById(index).disabled = false;
-      document.getElementById(index).style.background = '#555';
-      document.getElementById(index).style.color = 'white';
-      document.getElementById(index).innerHTML = '&nbsp;';
+      setBlankCell(j, k, boardRepresentation);
     }
   }
 }
