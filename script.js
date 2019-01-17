@@ -77,7 +77,7 @@ function fillBoard() {
   for (var j=0; j<9; j++) {
     for (var k=0; k<9; k++) {
       var coin = Math.random();
-      if (coin > 0.75) {
+      if (coin > 0.8) { // TODO: need better algorithm
         setFixedNumberCell(j, k, boardRepresentation);
       } else {
         setBlankCell(j, k, boardRepresentation);
@@ -97,6 +97,117 @@ function clearBoard() {
   }
 }
 
+function buildRepresentationCopyOfBoard() {
+  var boardRepresentation = [
+    [],[],[],[],[],[],[],[],[]
+  ];
+  for (var j=0; j<9; j++) {
+    for (var k=0; k<9; k++) {
+      var index = (j + 1) + '' + (k + 1);
+      var value = document.getElementById(index).innerHTML;
+      boardRepresentation[j][k] = (value != '&nbsp;') ? value : [];
+    }
+  }
+  return boardRepresentation;
+}
+
+function getInvalidRows(boardRepresentation) {
+  var message = '';
+  for (var row=0; row<9; row++) {
+    // get row
+    var temp = JSON.parse(JSON.stringify(boardRepresentation[row]));
+    temp.sort();
+    // check for repeats
+    for (var i=0; i<9; i++) {
+      for (var j=0; j<9; j++) {
+        if ((i != j) && (temp[i] != '&nbsp;') && (temp[j] != '&nbsp;') && (temp[i] === temp[j])) {
+          message += '\n' + temp[i] + ' is repeated in row ' + (row+1);
+        }
+      }
+    }
+  }
+  return message ? 'Invalid columns: \n' + message : '';
+}
+
+function getInvalidCols(boardRepresentation) {
+  var message = '';
+  for (var col=0; col<9; col++) {
+    // get column
+    var temp = [];
+    for (var row=0; row<9; row++) {
+      if (boardRepresentation[row][col] != '&nbsp;') {
+        temp.push(boardRepresentation[row][col]);
+      } else {
+        temp.push([]);
+      }
+    }
+    temp.sort();
+    // check for repeats
+    for (var i=0; i<9; i++) {
+      for (var j=0; j<9; j++) {
+        if ((i != j) && (temp[i]) && (temp[j]) && (temp[i] == temp[j])) {
+          message += '\n' + temp[i] + ' is repeated in column ' + (col+1);
+        }
+      }
+    }
+  }
+  return message ? 'Invalid column(s): \n' + message : '';
+}
+
+function getInvalidSquares(boardRepresentation) {
+  var message = '';
+  for (var row=0; row<9; row+=3) {
+    // get square
+    var temp = [];
+    temp.push(boardRepresentation[row][row]);
+    temp.push(boardRepresentation[row][row+1]);
+    temp.push(boardRepresentation[row][row+2]);
+    
+    temp.push(boardRepresentation[row+1][row]);
+    temp.push(boardRepresentation[row+1][row+1]);
+    temp.push(boardRepresentation[row+1][row+2]);
+    
+    temp.push(boardRepresentation[row+2][row]);
+    temp.push(boardRepresentation[row+2][row+1]);
+    temp.push(boardRepresentation[row+2][row+2]);
+    
+    temp.sort();
+    // check for repeats
+    for (var i=0; i<9; i++) {
+      for (var j=0; j<9; j++) {
+        if ((i != j) && (temp[i]) && (temp[j]) && (temp[i] == temp[j])) {
+          message += '\n' + temp[i] + ' is repeated in a square';
+        }
+      }
+    }
+  }
+  return message ? 'Invalid square(s) info: \n' + message : '';
+}
+
 function checkBoard() {
+  var boardRepresentation = buildRepresentationCopyOfBoard();
+  var errorMessage = '';
   
+  // check for conflicts
+  var invalidRows = getInvalidRows(boardRepresentation);
+  var invalidCols = getInvalidCols(boardRepresentation);
+  var invalidSquares = getInvalidSquares(boardRepresentation);
+  errorMessage += invalidRows;
+  errorMessage += invalidCols ? '\n\n' + invalidCols : '';
+  errorMessage += invalidSquares ? '\n\n' + invalidSquares : '';
+  alert(errorMessage ? errorMessage : 'No conflicts! :)');
+  
+  // check if solved
+  var count = 0;
+  for (var row=0; row<9; row++) {
+    for (var col=0; col<9; col++) {
+      var index = (row + 1) + '' + (col + 1);
+      if (document.getElementById(index).innerHTML != '&nbsp;') {
+        count++;
+      }
+    }
+  }
+  if (count == 9*9 && !errorMessage) {
+    alert('Solved!');
+  }
 }

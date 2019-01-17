@@ -26,16 +26,21 @@ button {
 }
 
 #clear-board,
-#fill-board {
+#fill-board,
+#check-board {
   padding: 10px;
 }
 
 #clear-board {
-  background: maroon;
+  background: blue;
 }
 
 #fill-board {
   background: darkgreen;
+}
+
+#check-board {
+  background: maroon;
 }
 
 input[placeholder~="Notes:"] {
