@@ -1,3 +1,8 @@
+window.onload = function() {
+  fillBoard();
+  document.getElementById("input").focus();
+};
+
 function set(id) {
   var input = document.getElementById('input').value;
   var reg = /^\d+$/;
@@ -56,15 +61,13 @@ function fillBoard() {
   for (var j=0; j<9; j++) {
     for (var k=0; k<9; k++) {
       var index = (j+1) + '' + (k+1);
+      document.getElementById(index).disabled = true;
+      document.getElementById(index).style.background = '#555';
+      document.getElementById(index).style.color = 'white';
       document.getElementById(index).innerHTML = boardRepresentation[j][k];
     }
   }
 }
-
-window.onload = function() {
-  fillBoard();
-  document.getElementById("input").focus();
-};
 
 function clearBoard() {
   var boardRepresentation = [
@@ -73,6 +76,9 @@ function clearBoard() {
   for (var j=0; j<9; j++) {
     for (var k=0; k<9; k++) {
       var index = (j+1) + '' + (k+1);
+      document.getElementById(index).disabled = false;
+      document.getElementById(index).style.background = '#555';
+      document.getElementById(index).style.color = 'white';
       document.getElementById(index).innerHTML = '&nbsp;';
     }
   }

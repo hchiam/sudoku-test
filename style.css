@@ -25,9 +25,17 @@ button {
   background: lightblue;
 }
 
-#clear-board {
+#clear-board,
+#fill-board {
   padding: 10px;
+}
+
+#clear-board {
   background: maroon;
+}
+
+#fill-board {
+  background: darkgreen;
 }
 
 input[placeholder~="Notes:"] {
