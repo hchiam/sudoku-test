@@ -16,7 +16,6 @@ function set(id) {
     alert('Please enter a number from 1 to 9.');
     highlightInputColour();
   }
-  document.getElementById('input').value = '';
   document.getElementById("input").focus();
 }
 
