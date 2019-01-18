@@ -18,6 +18,11 @@ button {
   font-weight: bold;
 }
 
+div button {
+  width: 30px;
+  height: 30px;
+}
+
 #input {
   width: 50%;
   border-radius: 5px;
