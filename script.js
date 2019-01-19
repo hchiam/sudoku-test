@@ -1,36 +1,71 @@
+var currentID = '';
+
 window.onload = function() {
   fillBoard();
-  document.getElementById("input").focus();
+  setUpModal();
 };
 
-function set(id) {
-  var input = document.getElementById('input').value;
-  var reg = /^\d+$/;
-  var isAllNumeric = reg.test(input);
-  if (isAllNumeric && input < 10 && input > 0) {
-    document.getElementById(id).innerHTML = input;
-    document.getElementById(id).style.background = 'blue';
-    document.getElementById(id).style.color = 'white';
-    resetInputColour();
-  } else {
-    alert('Please enter a number from 1 to 9.');
-    highlightInputColour();
+function setUpModal() {
+  var modal = document.getElementById('myModal');
+  
+  var buttonsCloseModal = document.getElementsByClassName("enterModalInput");
+  buttonsCloseModal[0].onclick = function() {
+    doTheActualSet();
+    modal.style.display = "none";
   }
-  document.getElementById("input").focus();
+  buttonsCloseModal[1].onclick = function() {
+    clearCell();
+    modal.style.display = "none";
+  }
+  
+  var spanCloseModal = document.getElementsByClassName("closeModal")[0];
+  spanCloseModal.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 }
 
-function resetInputColour() {
-  document.getElementById("input").style.background = 'white';
-  document.getElementById("input").style.color = 'black';
+function clearCell() {
+  var id = currentID;
+  
+  document.getElementById(id).innerHTML = '&nbsp;';
+  document.getElementById(id).style.background = '#555';
+  document.getElementById(id).style.color = 'white';
+  
+  document.getElementById('modal-input').value = '';
 }
 
-function highlightInputColour() {
-  document.getElementById("input").style.background = 'blue';
-  document.getElementById("input").style.color = 'white';
+function doTheActualSet() {
+  var id = currentID;
+  var input = document.getElementById('modal-input').value;
+  // var input = prompt('Enter a number from 1 to 9.');
+  if (input == '') {
+    document.getElementById(id).innerHTML = '&nbsp;';
+    document.getElementById(id).style.background = '#555';
+    document.getElementById(id).style.color = 'white';
+  } else if (!isNaN(input) && input < 10 && input > 0) {
+    document.getElementById(id).innerHTML = input;
+    document.getElementById(id).style.background = 'lightgrey';
+    document.getElementById(id).style.color = 'black';
+  } else {
+    alert('You must enter a number from 1 and 9.');
+  }
+  document.getElementById('modal-input').value = '';
+}
+
+function set(id) {
+  currentID = id;
+  var modal = document.getElementById('myModal');
+  modal.style.display = "block";
+  document.getElementById("modal-input").focus();
 }
 
 function inputAction() {
-  resetInputColour();
   var input = document.getElementById('input').value;
   var reg = /(\D|\d{2,})/;
   document.getElementById('input').value = input.replace(reg,'');
@@ -53,7 +88,7 @@ function getRandomRow() {
 function setFixedNumberCell(row, col, boardRepresentation) {
   var index = (row + 1) + '' + (col + 1);
   document.getElementById(index).disabled = true;
-  document.getElementById(index).style.background = '#555';
+  document.getElementById(index).style.background = 'black';
   document.getElementById(index).style.color = 'white';
   document.getElementById(index).innerHTML = boardRepresentation[row][col];
 }
