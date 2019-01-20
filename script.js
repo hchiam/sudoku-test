@@ -8,6 +8,7 @@ window.onload = function() {
 function setUpModal() {
   var modal = document.getElementById('myModal');
   
+  // if click on buttons
   var buttonsCloseModal = document.getElementsByClassName("enterModalInput");
   buttonsCloseModal[0].onclick = function() {
     doTheActualSet();
@@ -18,11 +19,22 @@ function setUpModal() {
     modal.style.display = "none";
   }
   
+  // if hit enter key
+  var elem = document.getElementById('modal-input');
+  elem.addEventListener('keypress', function(e){
+    if (e.keyCode == 13) {
+      doTheActualSet();
+      modal.style.display = "none";
+    }
+  });
+  
+  // if click on the x button
   var spanCloseModal = document.getElementsByClassName("closeModal")[0];
   spanCloseModal.onclick = function() {
     modal.style.display = "none";
   }
   
+  // if click outside of the modal
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
