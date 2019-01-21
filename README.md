@@ -1,7 +1,6 @@
 # sudoku-test
-Sudoku Test Page
 
-<a href="https://sudoku-test.glitch.me/">https://sudoku-test.glitch.me/</a>
+Sudoku Test Page: <a href="https://sudoku-test.glitch.me/" target="_blank">https://sudoku-test.glitch.me/</a>
 
 Code tested to work on an old iPad (so no Async/Await/jQuery/...): [master branch](https://github.com/hchiam/sudoku-test/tree/master).
 
