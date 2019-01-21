@@ -1,7 +1,7 @@
 var currentID = '';
 
-window.onload = function() {
-  fillBoard();
+window.onload = async function() {
+  await fillBoard();
   setUpModal();
 };
 
@@ -94,7 +94,7 @@ function shuffleArray(array) {
 }
 
 function getRandomRow() {
-  return shuffleArray([[1],[2],[3],[4],[5],[6],[7],[8],[9]]);
+  return shuffleArray([1,2,3,4,5,6,7,8,9]);
 }
 
 function setFixedNumberCell(row, col, boardRepresentation) {
@@ -113,28 +113,44 @@ function setBlankCell(row, col, boardRepresentation) {
   document.getElementById(index).innerHTML = '&nbsp;';
 }
 
-function fillBoard() {
+async function generateBoard() { 
   var boardRepresentation = [
-    [],[],[],[],[],[],[],[],[]
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
   ];
-  for (var i=0; i<9; i++) {
-    boardRepresentation[i] = getRandomRow();
-  }
-  for (var j=0; j<9; j++) {
-    for (var k=0; k<9; k++) {
-      var coin = Math.random();
-      if (coin > 0.8) { // TODO: need better algorithm
-        setFixedNumberCell(j, k, boardRepresentation);
-      } else {
-        setBlankCell(j, k, boardRepresentation);
+  var rowIndex = 0; // Math.floor(Math.random() * 9) + 0;
+  boardRepresentation[rowIndex] = getRandomRow();
+  return await solve(boardRepresentation);
+}
+
+async function fillBoard() {
+  generateBoard().then(function(response) {
+    var boardRepresentation = response.solution;
+    for (var j=0; j<9; j++) {
+      for (var k=0; k<9; k++) {
+        var coin = Math.random();
+        if (coin < 0.5) { // TODO: need better algorithm
+          setFixedNumberCell(j, k, boardRepresentation);
+        } else {
+          setBlankCell(j, k, boardRepresentation);
+        }
       }
     }
-  }
+  });
 }
 
 function clearBoard() {
   var boardRepresentation = [
-    [],[],[],[],[],[],[],[],[]
+    [],[],[],[],[],[],[],[],[] // 9 rows
   ];
   for (var j=0; j<9; j++) {
     for (var k=0; k<9; k++) {
@@ -145,7 +161,7 @@ function clearBoard() {
 
 function buildRepresentationCopyOfBoard() {
   var boardRepresentation = [
-    [],[],[],[],[],[],[],[],[]
+    [],[],[],[],[],[],[],[],[] // 9 rows
   ];
   for (var j=0; j<9; j++) {
     for (var k=0; k<9; k++) {
@@ -241,7 +257,6 @@ function checkBoard() {
   errorMessage += invalidRows;
   errorMessage += invalidCols ? '\n\n' + invalidCols : '';
   errorMessage += invalidSquares ? '\n\n' + invalidSquares : '';
-  alert(errorMessage ? errorMessage : 'No conflicts! :)');
   
   // check if solved
   var count = 0;
@@ -254,6 +269,18 @@ function checkBoard() {
     }
   }
   if (count == 9*9 && !errorMessage) {
-    alert('Solved!');
+    alert('Solved! :)');
+  } else {
+    alert(errorMessage ? errorMessage : 'No conflicts so far! :)');
   }
+}
+
+async function solve(boardRepresentation) {
+  var data = {
+    board: JSON.stringify(boardRepresentation)
+  };
+  return await $.post('https://sugoku.herokuapp.com/solve', data)
+    .done(function (response) {
+      return response.solution;
+  });
 }
