@@ -1,8 +1,8 @@
 var currentID = '';
 
-window.onload = async function() {
-  await fillBoard();
+window.onload = function() {
   setUpModal();
+  fillBoard();
 };
 
 function setUpModal() {
@@ -113,7 +113,7 @@ function setBlankCell(row, col, boardRepresentation) {
   document.getElementById(index).innerHTML = '&nbsp;';
 }
 
-async function generateBoard() { 
+function generateBoard(callback) {
   var boardRepresentation = [
     [0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0],
@@ -129,12 +129,14 @@ async function generateBoard() {
   ];
   var rowIndex = 0; // Math.floor(Math.random() * 9) + 0;
   boardRepresentation[rowIndex] = getRandomRow();
-  return await solve(boardRepresentation);
+  solve(boardRepresentation, function(solution) {
+    callback(solution);
+  });
 }
 
-async function fillBoard() {
-  generateBoard().then(function(response) {
-    var boardRepresentation = response.solution;
+function fillBoard() {
+  generateBoard(function(response) {
+    var boardRepresentation = response;
     for (var j=0; j<9; j++) {
       for (var k=0; k<9; k++) {
         var coin = Math.random();
@@ -275,12 +277,15 @@ function checkBoard() {
   }
 }
 
-async function solve(boardRepresentation) {
-  var data = {
-    board: JSON.stringify(boardRepresentation)
+function solve(boardRepresentation, callback) {
+  var xmlhttp = new XMLHttpRequest(); // for compatibility
+  xmlhttp.onreadystatechange = function() {
+    var XMLHttpRequestDONE = XMLHttpRequest.DONE || 4; // for compatibility
+    if (xmlhttp.readyState == XMLHttpRequestDONE) {
+      var solution = JSON.parse(xmlhttp.responseText).solution;
+      callback(solution);
+    }
   };
-  return await $.post('https://sugoku.herokuapp.com/solve', data)
-    .done(function (response) {
-      return response.solution;
-  });
+  xmlhttp.open("POST", "https://sugoku.herokuapp.com/solve", true);
+  xmlhttp.send();
 }
