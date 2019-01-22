@@ -20,8 +20,8 @@ function setUpModal() {
   }
   
   // if hit enter key
-  var elem = document.getElementById('modal-input');
-  elem.addEventListener('keypress', function(e){
+  var input = document.getElementById('modal-input');
+  input.addEventListener('keypress', function(e){
     if (e.keyCode == 13) {
       doTheActualSet();
       modal.style.display = "none";
@@ -40,6 +40,11 @@ function setUpModal() {
       modal.style.display = "none";
     }
   }
+}
+
+function numberPadSet(number) {
+  var input = document.getElementById('modal-input');
+  input.value = number;
 }
 
 function clearCell() {
@@ -72,9 +77,10 @@ function doTheActualSet() {
 
 function set(id) {
   currentID = id;
+  document.getElementById('modal-input').value = ''; // reset
   var modal = document.getElementById('myModal');
   modal.style.display = "block";
-  document.getElementById("modal-input").focus();
+  // document.getElementById("modal-input").focus(); // disable focus to prevent "bouncing" interface
 }
 
 function inputAction() {
