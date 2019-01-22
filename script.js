@@ -77,6 +77,7 @@ function doTheActualSet() {
 
 function set(id) {
   currentID = id;
+  document.getElementById('modal-input').value = ''; // reset
   var modal = document.getElementById('myModal');
   modal.style.display = "block";
   // document.getElementById("modal-input").focus(); // disable focus to prevent "bouncing" interface
