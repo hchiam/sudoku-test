@@ -72,15 +72,34 @@ function doTheActualSet() {
   } else {
     alert('You must enter a number from 1 and 9.');
   }
-  document.getElementById('modal-input').value = '';
+}
+
+function keyboardEnterNumber(event) {
+  var keynum;
+  
+  if (window.event) { // IE
+    keynum = event.keyCode;
+  } else if (event.which) { // Netscape/Firefox/Opera
+    keynum = event.which;
+  }
+  
+  var char = parseInt(String.fromCharCode(keynum));
+  
+  if ([1,2,3,4,5,6,7,8,9].includes(char)) {
+    document.getElementById('modal-input').value = char;
+    doTheActualSet();
+    document.getElementById('myModal').style.display = "none";
+  } else if (keynum == 13) {
+    document.getElementById('myModal').style.display = "none";
+  }
 }
 
 function set(id) {
   currentID = id;
-  document.getElementById('modal-input').value = ''; // reset
   var modal = document.getElementById('myModal');
   modal.style.display = "block";
-  // document.getElementById("modal-input").focus(); // disable focus to prevent "bouncing" in touchscreen interfaces
+  document.getElementById("myModal").focus();
+  // document.getElementById("modal-input").focus(); // disable focus on input to prevent "bouncing" in touchscreen interfaces
 }
 
 function inputAction() {
