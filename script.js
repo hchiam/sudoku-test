@@ -80,7 +80,7 @@ function set(id) {
   document.getElementById('modal-input').value = ''; // reset
   var modal = document.getElementById('myModal');
   modal.style.display = "block";
-  // document.getElementById("modal-input").focus(); // disable focus to prevent "bouncing" interface
+  // document.getElementById("modal-input").focus(); // disable focus to prevent "bouncing" in touchscreen interfaces
 }
 
 function inputAction() {
@@ -278,8 +278,53 @@ function checkBoard() {
   }
   if (count == 9*9 && !errorMessage) {
     alert('Solved! :)');
+    celebrate();
   } else {
     alert(errorMessage ? errorMessage : 'No conflicts so far! :)');
+  }
+}
+
+function confettiPiece() {
+  var div = document.createElement("div");
+  div.style.width = "10px";
+  div.style.height = "10px";
+  div.style.position = "fixed";
+  var colourChoice = Math.floor(Math.random() * 5);
+  if (colourChoice == 0) {
+    div.style.background = "red";
+  } else if (colourChoice == 1) {
+    div.style.background = "white";
+  } else if (colourChoice == 2) {
+    div.style.background = "blue";
+  } else if (colourChoice == 3) {
+    div.style.background = "green";
+  } else if (colourChoice == 4) {
+    div.style.background = "yellow";
+  }
+  div.style.transform = "rotate(20deg)";
+  
+  var pos = Math.random() * -100;
+  var leftStart = Math.random() * window.innerWidth;
+  var speed = Math.random() * 100 + 10;
+  var timer = setInterval(frame, 100);
+  function frame() {
+    if (pos >= window.innerHeight) {
+      clearInterval(timer);
+      div.parentNode.removeChild(div);
+    } else {
+      pos += speed;
+      div.style.top = pos + "px";
+      div.style.left = (leftStart + Math.random() * 10) + "px";
+      div.style.transform = "rotate(" + (Math.random() * 360) + "deg)";
+    }
+  }
+  
+  document.getElementById("confetti-box").appendChild(div);
+}
+
+function celebrate() {
+  for (var i=0; i<150; i++) {
+    confettiPiece();
   }
 }
 
