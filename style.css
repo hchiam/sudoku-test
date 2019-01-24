@@ -3,7 +3,8 @@
 body {
   font-family: avenir, arial;
   margin: 50px;
-  background: linear-gradient(to bottom right, #333, #337); /* #333; */
+  background: #333; /* fallback */
+  background: linear-gradient(to bottom right, #333, #337);
 }
 
 .row {
@@ -131,27 +132,31 @@ hr {
 
 button:hover,
 input:hover {
-  background: gold !important;
-  color: black !important;
   box-shadow: 0px 15px 20px rgba(1, 1, 1, 0.4);
   transform: translateY(-1px);
 }
 
 button:active {
   background: yellow !important;
+  color: black !important;
+  box-shadow: 0px 15px 20px rgba(1, 1, 1, 0.4);
+  transform: translateY(-1px);
 }
 
 #clear-board:hover,
 #clear-board:active {
   background: lightblue !important;
+  color: black !important;
 }
 
 #fill-board:hover,
 #fill-board:active {
   background: lightgreen !important;
+  color: black !important;
 }
 
 #check-board:hover,
 #check-board:active {
   background: red !important;
+  color: black !important;
 }
