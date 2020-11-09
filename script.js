@@ -12,11 +12,11 @@ function setUpModal() {
   var buttonsCloseModal = document.getElementsByClassName("enterModalInput");
   buttonsCloseModal[0].onclick = function () {
     doTheActualSet();
-    modal.style.display = "none";
+    // modal.style.display = "none";
   };
   buttonsCloseModal[1].onclick = function () {
     clearCell();
-    modal.style.display = "none";
+    // modal.style.display = "none";
   };
 
   // if hit enter key
