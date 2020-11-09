@@ -22,7 +22,7 @@ function setUpModal() {
   // if hit enter key
   var input = document.getElementById("modal-input");
   input.addEventListener("keypress", function (e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.code === "Enter") {
       doTheActualSet();
       modal.style.display = "none";
     }
@@ -91,7 +91,7 @@ function keyboardEnterNumber(event) {
     document.getElementById("modal-input").value = char;
     doTheActualSet();
     document.getElementById("myModal").style.display = "none";
-  } else if (keynum === 13) {
+  } else if (keynum === 13 || event.code === "Enter") {
     document.getElementById("myModal").style.display = "none";
   }
 }
