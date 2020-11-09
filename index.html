@@ -2,21 +2,25 @@
 <html lang="en">
   <head>
     <title>Sudoku Test Page :)</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    
+    <link rel="stylesheet" href="style.css" />
+
     <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
-  </head>  
+    <script src="script.js" defer></script>
+  </head>
   <body>
-    
     <div id="confetti-box"></div>
-    
-    <div id="myModal" class="modal" tabindex="0" onkeypress="return keyboardEnterNumber(event)">
+
+    <div
+      id="myModal"
+      class="modal"
+      tabindex="0"
+      onkeypress="return keyboardEnterNumber(event)"
+    >
       <div class="modal-content">
         <span class="closeModal">&times;</span>
         <p>Choose a number from 1 to 9:</p>
@@ -35,20 +39,22 @@
           <button onclick="numberPadSet(8)">8</button>
           <button onclick="numberPadSet(9)">9</button>
         </div>
-        <input id="modal-input"
-               type="number"
-               placeholder="Type and hit Enter.">
+        <input
+          id="modal-input"
+          type="number"
+          placeholder="Type and hit Enter."
+        />
         <div>
           <button class="enterModalInput">Enter</button>
           <button class="enterModalInput">Clear Cell</button>
         </div>
       </div>
     </div>
-    
+
     <button id="clear-board" onclick="clearBoard()">Clear Board</button>
     <button id="fill-board" onclick="fillBoard()">New Board</button>
     <button id="check-board" onclick="checkBoard()">Check Board</button>
-    
+
     <div>
       <button class="openModal" id="11" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="12" onclick="set(this.id)">&nbsp;</button>
@@ -61,7 +67,7 @@
       <button class="openModal" id="17" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="18" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="19" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
     <div>
       <button class="openModal" id="21" onclick="set(this.id)">&nbsp;</button>
@@ -75,7 +81,7 @@
       <button class="openModal" id="27" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="28" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="29" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
     <div>
       <button class="openModal" id="31" onclick="set(this.id)">&nbsp;</button>
@@ -89,9 +95,9 @@
       <button class="openModal" id="37" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="38" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="39" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
-    <hr>
+    <hr />
     <div>
       <button class="openModal" id="41" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="42" onclick="set(this.id)">&nbsp;</button>
@@ -104,7 +110,7 @@
       <button class="openModal" id="47" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="48" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="49" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
     <div>
       <button class="openModal" id="51" onclick="set(this.id)">&nbsp;</button>
@@ -118,7 +124,7 @@
       <button class="openModal" id="57" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="58" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="59" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
     <div>
       <button class="openModal" id="61" onclick="set(this.id)">&nbsp;</button>
@@ -132,9 +138,9 @@
       <button class="openModal" id="67" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="68" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="69" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
-    <hr>
+    <hr />
     <div>
       <button class="openModal" id="71" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="72" onclick="set(this.id)">&nbsp;</button>
@@ -147,7 +153,7 @@
       <button class="openModal" id="77" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="78" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="79" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
     <div>
       <button class="openModal" id="81" onclick="set(this.id)">&nbsp;</button>
@@ -161,7 +167,7 @@
       <button class="openModal" id="87" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="88" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="89" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
     <div>
       <button class="openModal" id="91" onclick="set(this.id)">&nbsp;</button>
@@ -175,29 +181,28 @@
       <button class="openModal" id="97" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="98" onclick="set(this.id)">&nbsp;</button>
       <button class="openModal" id="99" onclick="set(this.id)">&nbsp;</button>
-      <input class="notes-side" placeholder="Notes:">
+      <input class="notes-side" placeholder="Notes:" />
     </div>
     <div>
-      <input class="notes-bottom" placeholder="Notes:">
+      <input class="notes-bottom" placeholder="Notes:" />
       |
-      <input class="notes-bottom" placeholder="Notes:">
+      <input class="notes-bottom" placeholder="Notes:" />
       |
-      <input class="notes-bottom" placeholder="Notes:">
+      <input class="notes-bottom" placeholder="Notes:" />
     </div>
-    <div style="padding:10px 0">
-      <input class="notes-bottom" placeholder="Notes:">
+    <div style="padding: 10px 0">
+      <input class="notes-bottom" placeholder="Notes:" />
       |
-      <input class="notes-bottom" placeholder="Notes:">
+      <input class="notes-bottom" placeholder="Notes:" />
       |
-      <input class="notes-bottom" placeholder="Notes:">
+      <input class="notes-bottom" placeholder="Notes:" />
     </div>
     <div>
-      <input class="notes-bottom" placeholder="Notes:">
+      <input class="notes-bottom" placeholder="Notes:" />
       |
-      <input class="notes-bottom" placeholder="Notes:">
+      <input class="notes-bottom" placeholder="Notes:" />
       |
-      <input class="notes-bottom" placeholder="Notes:">
+      <input class="notes-bottom" placeholder="Notes:" />
     </div>
-    
   </body>
 </html>
