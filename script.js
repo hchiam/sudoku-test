@@ -22,7 +22,7 @@ function setUpModal() {
   // if hit enter key
   var input = document.getElementById("modal-input");
   input.addEventListener("keypress", function (e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       doTheActualSet();
       modal.style.display = "none";
     }
@@ -36,7 +36,7 @@ function setUpModal() {
 
   // if click outside of the modal
   window.onclick = function (event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
       modal.style.display = "none";
     }
   };
@@ -61,7 +61,7 @@ function doTheActualSet() {
   var id = currentID;
   var input = document.getElementById("modal-input").value;
   // var input = prompt('Enter a number from 1 to 9.');
-  if (input == "") {
+  if (input === "") {
     document.getElementById(id).innerHTML = "&nbsp;";
     document.getElementById(id).style.background = "#555";
     document.getElementById(id).style.color = "white";
@@ -91,7 +91,7 @@ function keyboardEnterNumber(event) {
     document.getElementById("modal-input").value = char;
     doTheActualSet();
     document.getElementById("myModal").style.display = "none";
-  } else if (keynum == 13) {
+  } else if (keynum === 13) {
     document.getElementById("myModal").style.display = "none";
   }
 }
@@ -258,7 +258,7 @@ function getInvalidCols(boardRepresentation) {
     // check for repeats
     for (var i = 0; i < 9; i++) {
       for (var j = 0; j < 9; j++) {
-        if (i != j && temp[i] && temp[j] && temp[i] == temp[j]) {
+        if (i != j && temp[i] && temp[j] && temp[i] === temp[j]) {
           message += "\n" + temp[i] + " is repeated in column " + (col + 1);
         }
       }
@@ -288,7 +288,7 @@ function getInvalidSquares(boardRepresentation) {
     // check for repeats
     for (var i = 0; i < 9; i++) {
       for (var j = 0; j < 9; j++) {
-        if (i != j && temp[i] && temp[j] && temp[i] == temp[j]) {
+        if (i != j && temp[i] && temp[j] && temp[i] === temp[j]) {
           message += "\n" + temp[i] + " is repeated in a square";
         }
       }
@@ -319,7 +319,7 @@ function checkBoard() {
       }
     }
   }
-  if (count == 9 * 9 && !errorMessage) {
+  if (count === 9 * 9 && !errorMessage) {
     alert("Solved! :)");
     celebrate();
   } else {
@@ -333,15 +333,15 @@ function confettiPiece() {
   div.style.height = "10px";
   div.style.position = "fixed";
   var colourChoice = Math.floor(Math.random() * 5);
-  if (colourChoice == 0) {
+  if (colourChoice === 0) {
     div.style.background = "red";
-  } else if (colourChoice == 1) {
+  } else if (colourChoice === 1) {
     div.style.background = "white";
-  } else if (colourChoice == 2) {
+  } else if (colourChoice === 2) {
     div.style.background = "blue";
-  } else if (colourChoice == 3) {
+  } else if (colourChoice === 3) {
     div.style.background = "green";
-  } else if (colourChoice == 4) {
+  } else if (colourChoice === 4) {
     div.style.background = "yellow";
   }
   div.style.transform = "rotate(20deg)";
@@ -375,7 +375,7 @@ function solve(boardRepresentation, callback) {
   var xmlhttp = new XMLHttpRequest(); // for compatibility
   xmlhttp.onreadystatechange = function () {
     var XMLHttpRequestDONE = XMLHttpRequest.DONE || 4; // for compatibility
-    if (xmlhttp.readyState == XMLHttpRequestDONE) {
+    if (xmlhttp.readyState === XMLHttpRequestDONE) {
       var solution = JSON.parse(xmlhttp.responseText).solution;
       callback(solution);
     }
