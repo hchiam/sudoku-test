@@ -12,17 +12,17 @@ function setUpModal() {
   var buttonsCloseModal = document.getElementsByClassName("enterModalInput");
   buttonsCloseModal[0].onclick = function () {
     doTheActualSet();
-    modal.style.display = "none";
+    // modal.style.display = "none";
   };
   buttonsCloseModal[1].onclick = function () {
     clearCell();
-    modal.style.display = "none";
+    // modal.style.display = "none";
   };
 
   // if hit enter key
   var input = document.getElementById("modal-input");
   input.addEventListener("keypress", function (e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13 || e.code === "Enter") {
       doTheActualSet();
       modal.style.display = "none";
     }
@@ -36,7 +36,7 @@ function setUpModal() {
 
   // if click outside of the modal
   window.onclick = function (event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
       modal.style.display = "none";
     }
   };
@@ -48,30 +48,51 @@ function numberPadSet(number) {
 }
 
 function clearCell() {
-  var id = currentID;
-
-  document.getElementById(id).innerHTML = "&nbsp;";
-  document.getElementById(id).style.background = "#555";
-  document.getElementById(id).style.color = "white";
+  var text = "&nbsp;";
+  var background = "#555";
+  var color = "white";
+  var selectedElements = document.querySelectorAll("[selected]");
+  for (var i = 0; i < selectedElements.length; i++) {
+    var selectedElement = selectedElements[i];
+    update(selectedElement, text, background, color);
+  }
 
   document.getElementById("modal-input").value = "";
 }
 
 function doTheActualSet() {
-  var id = currentID;
   var input = document.getElementById("modal-input").value;
   // var input = prompt('Enter a number from 1 to 9.');
-  if (input == "") {
-    document.getElementById(id).innerHTML = "&nbsp;";
-    document.getElementById(id).style.background = "#555";
-    document.getElementById(id).style.color = "white";
+  if (input === "") {
+    // clear value
+    var text = "&nbsp;";
+    var background = "#555";
+    var color = "white";
+    var selectedElements = document.querySelectorAll("[selected]");
+    for (var i = 0; i < selectedElements.length; i++) {
+      var selectedElement = selectedElements[i];
+      update(selectedElement, text, background, color);
+    }
   } else if (!isNaN(input) && input < 10 && input > 0) {
-    document.getElementById(id).innerHTML = input;
-    document.getElementById(id).style.background = "lightgrey";
-    document.getElementById(id).style.color = "black";
+    // set value
+    var text = input;
+    var background = "lightgrey";
+    var color = "black";
+    var selectedElements = document.querySelectorAll("[selected]");
+    for (var i = 0; i < selectedElements.length; i++) {
+      var selectedElement = selectedElements[i];
+      update(selectedElement, text, background, color);
+    }
   } else {
     alert("You must enter a number from 1 and 9.");
   }
+}
+
+function update(element, text, background, color) {
+  element.innerHTML = text;
+  element.style.background = background;
+  element.style.color = color;
+  element.removeAttribute("selected");
 }
 
 function keyboardEnterNumber(event) {
@@ -91,7 +112,7 @@ function keyboardEnterNumber(event) {
     document.getElementById("modal-input").value = char;
     doTheActualSet();
     document.getElementById("myModal").style.display = "none";
-  } else if (keynum == 13) {
+  } else if (keynum === 13 || event.code === "Enter") {
     document.getElementById("myModal").style.display = "none";
   }
 }
@@ -100,7 +121,10 @@ function set(id) {
   currentID = id;
   var modal = document.getElementById("myModal");
   modal.style.display = "block";
-  document.getElementById("myModal").focus();
+  var currentCell = document.getElementById(currentID);
+  currentCell.style.background = "green";
+  currentCell.setAttribute("selected", true);
+  // document.getElementById("myModal").focus();
   // document.getElementById("modal-input").focus(); // disable focus on input to prevent "bouncing" in touchscreen interfaces
 }
 
@@ -130,6 +154,7 @@ function setFixedNumberCell(row, col, boardRepresentation) {
   document.getElementById(index).style.background = "black";
   document.getElementById(index).style.color = "white";
   document.getElementById(index).innerHTML = boardRepresentation[row][col];
+  document.getElementById(index).removeAttribute("selected");
 }
 
 function setBlankCell(row, col, boardRepresentation) {
@@ -138,6 +163,7 @@ function setBlankCell(row, col, boardRepresentation) {
   document.getElementById(index).style.background = "#555";
   document.getElementById(index).style.color = "white";
   document.getElementById(index).innerHTML = "&nbsp;";
+  document.getElementById(index).removeAttribute("selected");
 }
 
 function generateBoard(callback) {
@@ -258,7 +284,7 @@ function getInvalidCols(boardRepresentation) {
     // check for repeats
     for (var i = 0; i < 9; i++) {
       for (var j = 0; j < 9; j++) {
-        if (i != j && temp[i] && temp[j] && temp[i] == temp[j]) {
+        if (i != j && temp[i] && temp[j] && temp[i] === temp[j]) {
           message += "\n" + temp[i] + " is repeated in column " + (col + 1);
         }
       }
@@ -288,7 +314,7 @@ function getInvalidSquares(boardRepresentation) {
     // check for repeats
     for (var i = 0; i < 9; i++) {
       for (var j = 0; j < 9; j++) {
-        if (i != j && temp[i] && temp[j] && temp[i] == temp[j]) {
+        if (i != j && temp[i] && temp[j] && temp[i] === temp[j]) {
           message += "\n" + temp[i] + " is repeated in a square";
         }
       }
@@ -319,7 +345,7 @@ function checkBoard() {
       }
     }
   }
-  if (count == 9 * 9 && !errorMessage) {
+  if (count === 9 * 9 && !errorMessage) {
     alert("Solved! :)");
     celebrate();
   } else {
@@ -333,15 +359,15 @@ function confettiPiece() {
   div.style.height = "10px";
   div.style.position = "fixed";
   var colourChoice = Math.floor(Math.random() * 5);
-  if (colourChoice == 0) {
+  if (colourChoice === 0) {
     div.style.background = "red";
-  } else if (colourChoice == 1) {
+  } else if (colourChoice === 1) {
     div.style.background = "white";
-  } else if (colourChoice == 2) {
+  } else if (colourChoice === 2) {
     div.style.background = "blue";
-  } else if (colourChoice == 3) {
+  } else if (colourChoice === 3) {
     div.style.background = "green";
-  } else if (colourChoice == 4) {
+  } else if (colourChoice === 4) {
     div.style.background = "yellow";
   }
   div.style.transform = "rotate(20deg)";
@@ -375,7 +401,7 @@ function solve(boardRepresentation, callback) {
   var xmlhttp = new XMLHttpRequest(); // for compatibility
   xmlhttp.onreadystatechange = function () {
     var XMLHttpRequestDONE = XMLHttpRequest.DONE || 4; // for compatibility
-    if (xmlhttp.readyState == XMLHttpRequestDONE) {
+    if (xmlhttp.readyState === XMLHttpRequestDONE) {
       var solution = JSON.parse(xmlhttp.responseText).solution;
       callback(solution);
     }

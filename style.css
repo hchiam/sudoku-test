@@ -7,6 +7,21 @@ body {
   background: linear-gradient(to bottom right, #333, #337);
 }
 
+section#board {
+  min-width: 1000px;
+}
+
+section#myModal {
+  position: absolute;
+  width: 40%;
+  min-width: 520px;
+  float: right;
+  top: 0;
+  right: 0;
+  left: auto;
+  height: 100%;
+}
+
 .row {
   padding: 0px;
 }
@@ -78,9 +93,6 @@ hr {
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -130,7 +142,7 @@ hr {
 
 /* Modal stuff ends */
 
-button:hover,
+button:hover:not([disabled]),
 input:hover {
   box-shadow: 0px 15px 20px rgba(1, 1, 1, 0.4);
   transform: translateY(-1px);
@@ -159,42 +171,4 @@ button:active {
 #check-board:active {
   background: red !important;
   color: black !important;
-}
-
-#redirect-note {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  place-content: center;
-  display: grid;
-}
-
-#redirect-note p {
-  color: white;
-  margin: 1rem;
-  background: black;
-  border-radius: 5px;
-  padding: 1rem;
-  box-shadow: 0 0 10px white;
-}
-
-#redirect-note a {
-  color: lime;
-}
-
-#redirect-note a:hover {
-  color: cyan;
-}
-
-#redirect-note:after {
-  content: "";
-  position: absolute;
-  height: 50%;
-  width: 100%;
-  top: 100%;
-  background: rgba(0, 0, 0, 0.5);
 }
