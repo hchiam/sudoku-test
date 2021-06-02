@@ -26,14 +26,15 @@ section#board {
 }
 
 section#myModal {
+  /* position: absolute; */
   flex: 1;
   width: 40%;
-  min-width: 520px;
+  /* min-width: 520px;
   float: right;
   top: 0;
   right: 0;
-  left: auto;
-  height: 100%;
+  left: auto; */
+  /* height: 100%; */
   margin: 10px;
 }
 
