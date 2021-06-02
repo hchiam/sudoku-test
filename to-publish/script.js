@@ -41,7 +41,7 @@ function setUpModal() {
   //   }
   // };
 
-  makeModalDraggable();
+  // makeModalDraggable();
 }
 
 function numberPadSet(number) {
