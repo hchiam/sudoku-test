@@ -23,7 +23,7 @@ function makeElementDraggable(element, settings) {
   }
   function setupOnTouchStart(event) {
     var e = event || window.event;
-    // e.preventDefault();
+    e.preventDefault();
     mouseX = e.clientX || (e.touches && e.touches.length && e.touches[0].pageX);
     mouseY = e.clientY || (e.touches && e.touches.length && e.touches[0].pageY);
     document.addEventListener("touchend", stopDraggingOnTouchEnd);
@@ -51,10 +51,10 @@ function makeElementDraggable(element, settings) {
     element.focus();
     var e = event || window.event;
     e.preventDefault();
-    const xChange =
+    var xChange =
       e.clientX - mouseX ||
       (e.touches && e.touches.length && e.touches[0].pageX - mouseX);
-    const yChange =
+    var yChange =
       e.clientY - mouseY ||
       (e.touches && e.touches.length && e.touches[0].pageY - mouseY);
     mouseX = e.clientX || (e.touches && e.touches.length && e.touches[0].pageX);
