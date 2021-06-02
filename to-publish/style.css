@@ -20,7 +20,7 @@ body {
 }
 
 section#board {
-  /* min-width: 1000px; */
+  min-width: 700px;
   flex: 1;
   margin: 10px;
 }
@@ -29,8 +29,8 @@ section#myModal {
   /* position: absolute; */
   flex: 1;
   width: 40%;
-  /* min-width: 520px;
-  float: right;
+  min-width: 100px;
+  /* float: right;
   top: 0;
   right: 0;
   left: auto; */
@@ -125,7 +125,7 @@ hr {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
+  width: 250px;
   text-align: center;
 }
 
