@@ -40,6 +40,8 @@ function setUpModal() {
   //     modal.style.display = "none";
   //   }
   // };
+
+  makeModalDraggable();
 }
 
 function numberPadSet(number) {
@@ -408,4 +410,10 @@ function solve(boardRepresentation, callback) {
   };
   xmlhttp.open("POST", "https://sugoku.herokuapp.com/solve", true);
   xmlhttp.send();
+}
+
+function makeModalDraggable() {
+  var modal = document.querySelector(".modal-content");
+  var settings = {};
+  makeElementDraggable(modal, settings);
 }
