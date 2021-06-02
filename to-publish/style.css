@@ -20,7 +20,7 @@ body {
 }
 
 section#board {
-  /* width: 700px; */
+  min-width: 700px;
   flex: 1;
   margin: 10px;
 }
