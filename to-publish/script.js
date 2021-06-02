@@ -28,18 +28,18 @@ function setUpModal() {
     }
   });
 
-  // if click on the x button
-  var spanCloseModal = document.getElementsByClassName("closeModal")[0];
-  spanCloseModal.onclick = function () {
-    modal.style.display = "none";
-  };
+  // // if click on the x button
+  // var spanCloseModal = document.getElementsByClassName("closeModal")[0];
+  // spanCloseModal.onclick = function () {
+  //   modal.style.display = "none";
+  // };
 
-  // if click outside of the modal
-  window.onclick = function (event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  };
+  // // if click outside of the modal
+  // window.onclick = function (event) {
+  //   if (event.target === modal) {
+  //     modal.style.display = "none";
+  //   }
+  // };
 }
 
 function numberPadSet(number) {

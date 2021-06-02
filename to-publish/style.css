@@ -1,18 +1,32 @@
 /* CSS files add styling rules to your content */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: avenir, arial;
-  margin: 50px;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
   background: #333; /* fallback */
   background: linear-gradient(to bottom right, #333, #337);
 }
 
+#side-by-side {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 section#board {
-  min-width: 1000px;
+  /* min-width: 1000px; */
+  flex: 1;
+  margin: 10px;
 }
 
 section#myModal {
-  position: absolute;
+  flex: 1;
   width: 40%;
   min-width: 520px;
   float: right;
@@ -20,6 +34,7 @@ section#myModal {
   right: 0;
   left: auto;
   height: 100%;
+  margin: 10px;
 }
 
 .row {

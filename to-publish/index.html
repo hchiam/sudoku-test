@@ -15,196 +15,329 @@
   <body>
     <div id="confetti-box"></div>
 
-    <section
-      id="myModal"
-      class="modal"
-      tabindex="0"
-      onkeypress="return keyboardEnterNumber(event)"
-    >
-      <div class="modal-content">
-        <span class="closeModal">&times;</span>
-        <p>Choose a number from 1 to 9:</p>
-        <div>
-          <button onclick="numberPadSet(1)">1</button>
-          <button onclick="numberPadSet(2)">2</button>
-          <button onclick="numberPadSet(3)">3</button>
-        </div>
-        <div>
-          <button onclick="numberPadSet(4)">4</button>
-          <button onclick="numberPadSet(5)">5</button>
-          <button onclick="numberPadSet(6)">6</button>
-        </div>
-        <div>
-          <button onclick="numberPadSet(7)">7</button>
-          <button onclick="numberPadSet(8)">8</button>
-          <button onclick="numberPadSet(9)">9</button>
-        </div>
-        <input
-          id="modal-input"
-          type="number"
-          placeholder="Type and hit Enter."
-        />
-        <div>
-          <button class="enterModalInput">Enter</button>
-          <button class="enterModalInput">Clear Cell</button>
-        </div>
-      </div>
-    </section>
-
     <button id="clear-board" onclick="clearBoard()">Clear Board</button>
     <button id="fill-board" onclick="fillBoard()">New Board</button>
     <button id="check-board" onclick="checkBoard()">Check Board</button>
 
-    <section id="board">
-      <div>
-        <button class="openModal" id="11" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="12" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="13" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="14" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="15" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="16" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="17" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="18" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="19" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <div>
-        <button class="openModal" id="21" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="22" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="23" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="24" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="25" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="26" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="27" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="28" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="29" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <div>
-        <button class="openModal" id="31" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="32" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="33" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="34" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="35" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="36" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="37" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="38" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="39" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <hr />
-      <div>
-        <button class="openModal" id="41" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="42" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="43" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="44" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="45" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="46" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="47" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="48" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="49" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <div>
-        <button class="openModal" id="51" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="52" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="53" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="54" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="55" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="56" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="57" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="58" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="59" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <div>
-        <button class="openModal" id="61" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="62" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="63" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="64" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="65" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="66" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="67" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="68" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="69" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <hr />
-      <div>
-        <button class="openModal" id="71" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="72" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="73" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="74" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="75" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="76" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="77" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="78" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="79" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <div>
-        <button class="openModal" id="81" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="82" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="83" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="84" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="85" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="86" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="87" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="88" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="89" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <div>
-        <button class="openModal" id="91" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="92" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="93" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="94" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="95" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="96" onclick="set(this.id)">&nbsp;</button>
-        |
-        <button class="openModal" id="97" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="98" onclick="set(this.id)">&nbsp;</button>
-        <button class="openModal" id="99" onclick="set(this.id)">&nbsp;</button>
-        <input class="notes-side" placeholder="Notes:" />
-      </div>
-      <div>
-        <input class="notes-bottom" placeholder="Notes:" />
-        |
-        <input class="notes-bottom" placeholder="Notes:" />
-        |
-        <input class="notes-bottom" placeholder="Notes:" />
-      </div>
-      <div style="padding: 10px 0">
-        <input class="notes-bottom" placeholder="Notes:" />
-        |
-        <input class="notes-bottom" placeholder="Notes:" />
-        |
-        <input class="notes-bottom" placeholder="Notes:" />
-      </div>
-      <div>
-        <input class="notes-bottom" placeholder="Notes:" />
-        |
-        <input class="notes-bottom" placeholder="Notes:" />
-        |
-        <input class="notes-bottom" placeholder="Notes:" />
-      </div>
-    </section>
+    <div id="side-by-side">
+      <section id="board">
+        <div>
+          <button class="openModal" id="11" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="12" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="13" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="14" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="15" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="16" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="17" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="18" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="19" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+        <div>
+          <button class="openModal" id="21" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="22" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="23" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="24" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="25" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="26" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="27" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="28" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="29" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+        <div>
+          <button class="openModal" id="31" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="32" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="33" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="34" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="35" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="36" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="37" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="38" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="39" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+        <hr />
+        <div>
+          <button class="openModal" id="41" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="42" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="43" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="44" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="45" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="46" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="47" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="48" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="49" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+        <div>
+          <button class="openModal" id="51" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="52" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="53" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="54" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="55" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="56" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="57" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="58" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="59" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+        <div>
+          <button class="openModal" id="61" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="62" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="63" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="64" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="65" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="66" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="67" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="68" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="69" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+        <hr />
+        <div>
+          <button class="openModal" id="71" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="72" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="73" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="74" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="75" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="76" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="77" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="78" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="79" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+        <div>
+          <button class="openModal" id="81" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="82" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="83" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="84" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="85" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="86" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="87" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="88" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="89" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+        <div>
+          <button class="openModal" id="91" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="92" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="93" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="94" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="95" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="96" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          |
+          <button class="openModal" id="97" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="98" onclick="set(this.id)">
+            &nbsp;
+          </button>
+          <button class="openModal" id="99" onclick="set(this.id)">
+            &nbsp;
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="myModal"
+        tabindex="0"
+        onkeypress="return keyboardEnterNumber(event)"
+      >
+        <div class="modal-content">
+          <!-- <span class="closeModal">&times;</span> -->
+          <p>Choose a number from 1 to 9:</p>
+          <div>
+            <button onclick="numberPadSet(1)">1</button>
+            <button onclick="numberPadSet(2)">2</button>
+            <button onclick="numberPadSet(3)">3</button>
+          </div>
+          <div>
+            <button onclick="numberPadSet(4)">4</button>
+            <button onclick="numberPadSet(5)">5</button>
+            <button onclick="numberPadSet(6)">6</button>
+          </div>
+          <div>
+            <button onclick="numberPadSet(7)">7</button>
+            <button onclick="numberPadSet(8)">8</button>
+            <button onclick="numberPadSet(9)">9</button>
+          </div>
+          <input
+            id="modal-input"
+            type="number"
+            placeholder="Type and hit Enter."
+          />
+          <div>
+            <button class="enterModalInput">Enter</button>
+            <button class="enterModalInput">Clear Cell</button>
+          </div>
+        </div>
+      </section>
+    </div>
   </body>
 </html>
