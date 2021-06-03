@@ -207,6 +207,8 @@ function fillBoard() {
 }
 
 function clearBoard() {
+  var yes = confirm("Are you sure you want to clear the board?");
+  if (!yes) return;
   var boardRepresentation = [
     [],
     [],
