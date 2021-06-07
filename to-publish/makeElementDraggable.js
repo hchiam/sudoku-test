@@ -3,7 +3,7 @@ function makeElementDraggable(element, settings) {
   var mouseY = 0;
   var disableStyleReset = (settings && settings.disableStyleReset) || false;
   var snapPoints = (settings && settings.snapPoints) || []; // [ {x,y}, ... ]
-  element.addEventListener("mousedown", setupOnMouseDown);
+  element.addEventListener("mousedown", setupOnMouseDown, false);
   element.addEventListener("touchstart", setupOnTouchStart, { passive: true });
   if (!disableStyleReset || typeof disableStyleReset !== "boolean") {
     element.style.marginBlockStart = "initial";
@@ -15,8 +15,8 @@ function makeElementDraggable(element, settings) {
     e.preventDefault();
     mouseX = e.clientX || (e.touches && e.touches.length && e.touches[0].pageX);
     mouseY = e.clientY || (e.touches && e.touches.length && e.touches[0].pageY);
-    document.addEventListener("mouseup", stopDraggingOnMouseUp);
-    document.addEventListener("mousemove", dragOnMouseMove);
+    document.addEventListener("mouseup", stopDraggingOnMouseUp, false);
+    document.addEventListener("mousemove", dragOnMouseMove, false);
     if (settings && settings.mouseDownCallback) {
       settings.mouseDownCallback(element);
     }
@@ -26,8 +26,8 @@ function makeElementDraggable(element, settings) {
     e.preventDefault();
     mouseX = e.clientX || (e.touches && e.touches.length && e.touches[0].pageX);
     mouseY = e.clientY || (e.touches && e.touches.length && e.touches[0].pageY);
-    document.addEventListener("touchend", stopDraggingOnTouchEnd);
-    document.addEventListener("touchmove", dragOnTouchMove);
+    document.addEventListener("touchend", stopDraggingOnTouchEnd, false);
+    document.addEventListener("touchmove", dragOnTouchMove, false);
     if (settings && settings.touchStartCallback) {
       settings.touchStartCallback(element);
     }
