@@ -16,6 +16,8 @@
     <button id="fill-board" onclick="fillBoard()">New Board</button>
     <button id="check-board" onclick="checkBoard()">Check Board</button>
 
+    <span id="debug-info"></span>
+
     <div id="side-by-side">
       <section id="board">
         <div>
@@ -310,19 +312,19 @@
           <!-- <span class="closeModal">&times;</span> -->
           <p>Choose a number from 1 to 9:</p>
           <div>
-            <button onclick="numberPadSet(1)">1</button>
-            <button onclick="numberPadSet(2)">2</button>
-            <button onclick="numberPadSet(3)">3</button>
+            <button class="number-pad" onclick="numberPadSet(1)">1</button>
+            <button class="number-pad" onclick="numberPadSet(2)">2</button>
+            <button class="number-pad" onclick="numberPadSet(3)">3</button>
           </div>
           <div>
-            <button onclick="numberPadSet(4)">4</button>
-            <button onclick="numberPadSet(5)">5</button>
-            <button onclick="numberPadSet(6)">6</button>
+            <button class="number-pad" onclick="numberPadSet(4)">4</button>
+            <button class="number-pad" onclick="numberPadSet(5)">5</button>
+            <button class="number-pad" onclick="numberPadSet(6)">6</button>
           </div>
           <div>
-            <button onclick="numberPadSet(7)">7</button>
-            <button onclick="numberPadSet(8)">8</button>
-            <button onclick="numberPadSet(9)">9</button>
+            <button class="number-pad" onclick="numberPadSet(7)">7</button>
+            <button class="number-pad" onclick="numberPadSet(8)">8</button>
+            <button class="number-pad" onclick="numberPadSet(9)">9</button>
           </div>
           <input
             id="modal-input"
@@ -334,7 +336,7 @@
           />
           <div>
             <button class="enterModalInput">Enter</button>
-            <button class="enterModalInput">Clear Cell</button>
+            <button class="enterModalInput">Clear Cells</button>
           </div>
         </div>
       </section>
@@ -343,7 +345,8 @@
     <!-- draggable -->
     <script src="makeElementDraggable.js"></script>
 
-    <!-- import the webpage's javascript file -->
+    <!-- import the webpage's main javascript -->
+    <script src="sudoku.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,0 +1,15 @@
+{
+  "name": "sudoku-test",
+  "repository": "https://github.com/hchiam/sudoku-test.git",
+  "license": "MIT",
+  "devDependencies": {
+    "es-check": "^6.0.0"
+  },
+  "scripts": {
+    "dev": "yarn start",
+    "start": "yarn es-check && open ./to-publish/index.html",
+    "es-check": "es-check es5 './to-publish/**/*.js'",
+    "deploy": "yarn es-check && bash publish.sh",
+    "publish": "yarn deploy"
+  }
+}

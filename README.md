@@ -7,7 +7,9 @@ Code tested to work on an old iPad (so no Async/Await/jQuery/...): [master branc
 Alternative code that uses Async/Await: [with-async-await branch](https://github.com/hchiam/sudoku-test/tree/with-async-await).
 
 ```bash
-bash publish.sh
+yarn
+yarn dev
+yarn deploy
 ```
 
 ## (Old) Screenshots

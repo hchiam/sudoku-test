@@ -13,6 +13,7 @@ function makeElementDraggable(element, settings) {
   function setupOnMouseDown(event) {
     var e = event || window.event;
     e.preventDefault();
+    e.stopPropagation();
     mouseX = e.clientX || (e.touches && e.touches.length && e.touches[0].pageX);
     mouseY = e.clientY || (e.touches && e.touches.length && e.touches[0].pageY);
     document.addEventListener("mouseup", stopDraggingOnMouseUp, false);
@@ -24,6 +25,7 @@ function makeElementDraggable(element, settings) {
   function setupOnTouchStart(event) {
     var e = event || window.event;
     e.preventDefault();
+    e.stopPropagation();
     mouseX = e.clientX || (e.touches && e.touches.length && e.touches[0].pageX);
     mouseY = e.clientY || (e.touches && e.touches.length && e.touches[0].pageY);
     document.addEventListener("touchend", stopDraggingOnTouchEnd, false);
@@ -51,6 +53,7 @@ function makeElementDraggable(element, settings) {
     element.focus();
     var e = event || window.event;
     e.preventDefault();
+    e.stopPropagation();
     var xChange =
       e.clientX - mouseX ||
       (e.touches && e.touches.length && e.touches[0].pageX - mouseX);
@@ -63,7 +66,10 @@ function makeElementDraggable(element, settings) {
     element.style.top = element.offsetTop + yChange + "px";
   }
 
-  function stopDraggingOnMouseUp() {
+  function stopDraggingOnMouseUp(event) {
+    var e = event || window.event;
+    e.preventDefault();
+    e.stopPropagation();
     document.removeEventListener("mouseup", stopDraggingOnMouseUp);
     document.removeEventListener("mousemove", dragOnMouseMove);
     snap(element);
@@ -72,7 +78,10 @@ function makeElementDraggable(element, settings) {
     }
   }
 
-  function stopDraggingOnTouchEnd() {
+  function stopDraggingOnTouchEnd(event) {
+    var e = event || window.event;
+    e.preventDefault();
+    e.stopPropagation();
     document.removeEventListener("touchend", stopDraggingOnTouchEnd);
     document.removeEventListener("touchmove", dragOnTouchMove);
     snap(element);
@@ -123,12 +132,14 @@ function makeElementDraggable(element, settings) {
     }
   }
 
-  function snapToGrid(value, gridSize = 25) {
+  function snapToGrid(value, gridSize) {
+    gridSize = gridSize || 25;
     var newValue = gridSize * Math.floor(value / gridSize);
     return newValue;
   }
 
-  function isSnapPointInRange(snapPoint, left, top, threshold = 50) {
+  function isSnapPointInRange(snapPoint, left, top, threshold) {
+    threshold = threshold || 50;
     var a = snapPoint.x - left;
     var b = snapPoint.y - top;
     var c = Math.sqrt(a * a + b * b);

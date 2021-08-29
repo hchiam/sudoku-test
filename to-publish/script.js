@@ -1,8 +1,13 @@
 var currentID = "";
 
 window.onload = function () {
-  setUpModal();
-  fillBoard();
+  try {
+    setUpModal();
+    fillBoard();
+  } catch (e) {
+    document.querySelector("#debug-info").innerText =
+      navigator.userAgent + " " + e;
+  }
 };
 
 function setUpModal() {
@@ -10,11 +15,11 @@ function setUpModal() {
 
   // if click on buttons
   var buttonsCloseModal = document.getElementsByClassName("enterModalInput");
-  buttonsCloseModal[0].onclick = function () {
+  buttonsCloseModal[0].onclick = function (e) {
     doTheActualSet();
     // modal.style.display = "none";
   };
-  buttonsCloseModal[1].onclick = function () {
+  buttonsCloseModal[1].onclick = function (e) {
     clearCell();
     // modal.style.display = "none";
   };
@@ -190,7 +195,9 @@ function generateBoard(callback) {
 }
 
 function fillBoard() {
+  var filled = false;
   generateBoard(function (response) {
+    filled = true;
     var boardRepresentation = response;
     for (var j = 0; j < 9; j++) {
       for (var k = 0; k < 9; k++) {
@@ -204,6 +211,22 @@ function fillBoard() {
       }
     }
   });
+  setTimeout(function () {
+    if (!filled) {
+      var boardRepresentation = alternateSudokuGeneratorParser(
+        sudoku.generate("hard")
+      );
+      for (var j = 0; j < 9; j++) {
+        for (var k = 0; k < 9; k++) {
+          if (boardRepresentation[j][k]) {
+            setFixedNumberCell(j, k, boardRepresentation);
+          } else {
+            setBlankCell(j, k, boardRepresentation);
+          }
+        }
+      }
+    }
+  }, 1000);
 }
 
 function clearBoard() {
@@ -403,10 +426,11 @@ function celebrate() {
 
 function solve(boardRepresentation, callback) {
   var xmlhttp = new XMLHttpRequest(); // for compatibility
+  xmlhttp.timeout = 1000;
   xmlhttp.onreadystatechange = function () {
-    var XMLHttpRequestDONE = XMLHttpRequest.DONE || 4; // for compatibility
-    if (xmlhttp.readyState === XMLHttpRequestDONE) {
+    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
       var solution = JSON.parse(xmlhttp.responseText).solution;
+      filled = !!solution;
       callback(solution);
     }
   };
@@ -414,8 +438,55 @@ function solve(boardRepresentation, callback) {
   xmlhttp.send();
 }
 
+function alternateSudokuGeneratorParser(oneSudokuString) {
+  var board2d = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ];
+  for (var row = 0; row < 9; row++) {
+    for (var col = 0; col < 9; col++) {
+      var value = oneSudokuString[row * 9 + col];
+      board2d[row][col] = value !== "." ? Number(value) : 0;
+    }
+  }
+  return board2d;
+}
+
 function makeModalDraggable() {
   var modal = document.querySelector(".modal-content");
   var settings = {};
   makeElementDraggable(modal, settings);
+
+  // need to (re)define as tap events
+  // prevent tapping buttons from triggering drag:
+  var modalButtons = document.querySelectorAll("button.number-pad");
+  for (var i = 0; i < modalButtons.length; i++) {
+    modalButtons[i].addEventListener("touchend", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      numberPadSet(this.innerText);
+    });
+  }
+  var buttonsCloseModal = document.getElementsByClassName("enterModalInput");
+  buttonsCloseModal[0].addEventListener("touchend", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    doTheActualSet();
+    // modal.style.display = "none";
+  });
+  buttonsCloseModal[1].addEventListener("touchend", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    clearCell();
+    // modal.style.display = "none";
+  });
 }
