@@ -214,7 +214,7 @@ function fillBoard() {
   setTimeout(function () {
     if (!filled) {
       var boardRepresentation = alternateSudokuGeneratorParser(
-        sudoku.generate("hard")
+        sudoku.generate("medium")
       );
       for (var j = 0; j < 9; j++) {
         for (var k = 0; k < 9; k++) {
