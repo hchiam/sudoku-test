@@ -21,7 +21,7 @@
   },
   "lint-staged": {
     "**/*.js": [
-      "es-check es5 './**/*.js' --not=node_modules"
+      "es-check es5 './to-publish/**/*.js'"
     ]
   }
 }
