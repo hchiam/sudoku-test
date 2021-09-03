@@ -3,7 +3,9 @@
   "repository": "https://github.com/hchiam/sudoku-test.git",
   "license": "MIT",
   "devDependencies": {
-    "es-check": "^6.0.0"
+    "es-check": "^6.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2"
   },
   "scripts": {
     "dev": "yarn start",
@@ -11,5 +13,15 @@
     "es-check": "es-check es5 './to-publish/**/*.js'",
     "deploy": "yarn es-check && bash publish.sh",
     "publish": "yarn deploy"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "es-check es5 './**/*.js' --not=node_modules"
+    ]
   }
 }
