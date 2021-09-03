@@ -195,6 +195,10 @@ button:active {
   display: flex;
 }
 
+.board-row input {
+  width: 100px;
+}
+
 .bottom-notes-row input {
   font-size: large;
   width: 50px;
