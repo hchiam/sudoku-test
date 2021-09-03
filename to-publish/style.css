@@ -7,6 +7,7 @@
 body {
   font-family: avenir, arial;
   width: 100vw;
+  height: 150vh;
   margin: 0;
   padding: 0;
   background: #333; /* fallback */
@@ -188,4 +189,21 @@ button:active {
 #check-board:active {
   background: red !important;
   color: black !important;
+}
+
+.board-row {
+  display: flex;
+}
+
+.bottom-notes-row input {
+  font-size: large;
+  width: 50px;
+  height: 12ch;
+  margin: 3px;
+  writing-mode: vertical-lr;
+}
+
+.board-row input,
+.bottom-notes-row input {
+  font-size: large;
 }
