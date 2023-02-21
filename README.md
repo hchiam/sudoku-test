@@ -16,14 +16,14 @@ yarn deploy
 
 ### iPad:
 
-<img src="https://github.com/hchiam/sudoku-test/blob/master/screenshots/iPadScreenshot.png" 
+<img src="https://github.com/hchiam/sudoku-test/blob/main/screenshots/iPadScreenshot.png" 
   width="300" 
   alt="iPad Screenshot"
   title="iPad Screenshot">
 
 ### Chrome:
 
-<img src="https://github.com/hchiam/sudoku-test/blob/master/screenshots/ChromeScreenshot.png" 
+<img src="https://github.com/hchiam/sudoku-test/blob/main/screenshots/ChromeScreenshot.png" 
   width="300" 
   alt="Chrome Screenshot"
   title="Chrome Screenshot">
